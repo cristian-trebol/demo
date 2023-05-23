@@ -1,10 +1,11 @@
-from tqdm import tqdm
+from cups import Cups
 
-x= 1
-y = 2
-suma = 1 + 2
-resta = 1 - 2
-producto = 1*2
-print(suma)
-print(resta)
+from invoice import Invoice
 
+cups = Cups(cups='ES3431431431', subsistema='Canarias')
+print("Pais: " + cups.getPais())
+factura = Invoice(cups=cups, iva=0.21, base=100, fecha_inicio_suministro='2020-01-01',
+                  fecha_fin_suministro='2020-01-31')
+print("Pais desde factura: " + factura.cups.getPais())
+
+print('Total a pagar: ' + str(factura.total_a_pagar()))
